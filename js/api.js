@@ -1,6 +1,6 @@
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com/todos';
-
+// Получает список задач с сервера
 export async function fetchTasks() {
     const response = await fetch(`${BASE_URL}?_limit=10`);
     if (!response.ok) {
@@ -8,7 +8,7 @@ export async function fetchTasks() {
     }
     return await response.json();
 }
-
+// Отправляет новую задачу на сервер
 export async function createTask(task) {
     const response = await fetch(BASE_URL, {
         method: 'POST',
@@ -27,7 +27,7 @@ export async function createTask(task) {
     }
     return await response.json();
 }
-
+// Обновляет существующую задачу на сервере
 export async function updateTask(id, updates) {
     const response = await fetch(`${BASE_URL}/${id}`, {
         method: 'PATCH',
@@ -42,7 +42,7 @@ export async function updateTask(id, updates) {
     }
     return await response.json();
 }
-
+// Удаляет задачу с сервера
 export async function deleteTask(id) {
     const response = await fetch(`${BASE_URL}/${id}`, {
         method: 'DELETE',
